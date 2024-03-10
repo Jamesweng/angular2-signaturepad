@@ -1,14 +1,14 @@
+import * as SignaturePadNative from 'signature_pad';
+
 import {
   AfterContentInit,
   Component,
   ElementRef,
   EventEmitter,
   Input,
-  Output,
   OnDestroy,
+  Output,
 } from '@angular/core';
-
-import * as SignaturePadNative from 'signature_pad';
 
 export interface Point {
   x: number;
@@ -50,8 +50,8 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
     }
 
     this.signaturePad = new SignaturePadNative.default(canvas, this.options);
-    this.signaturePad.onBegin = this.onBegin.bind(this);
-    this.signaturePad.onEnd = this.onEnd.bind(this);
+    this.signaturePad.beginStroke = this.onBegin.bind(this);
+    this.signaturePad.endStroke = this.onEnd.bind(this);
   }
 
   public ngOnDestroy(): void {
@@ -141,13 +141,13 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
   }
 
   // notify subscribers on signature begin
-  public onBegin(): void {
-    this.onBeginEvent.emit(true);
+  public onBegin(event): void {
+    this.onBeginEvent.emit(event);
   }
 
   // notify subscribers on signature end
-  public onEnd(): void {
-    this.onEndEvent.emit(true);
+  public onEnd(event): void {
+    this.onEndEvent.emit(event);
   }
 
   public queryPad(): any {
