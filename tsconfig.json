@@ -3,14 +3,15 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "rootDir": "./projects/angular2-signaturepad",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "es2022",
     "lib": ["es2018", "dom"],
     "paths": {
       "angular2-signaturepad": [
